@@ -53,7 +53,9 @@ class TripItem extends StatelessWidget {
                   ? DocumentList(
                       trip: trip,
                       addMoreDocuments: markAsPickedup,
-                      images: trip.imagesPickup)
+                      images: trip.imagesPickup,
+                      imageLocation: 'images_pickup',
+                    )
                   : ElevatedButton(
                       onPressed: () {
                         markAsPickedup(trip);
@@ -102,7 +104,8 @@ class TripItem extends StatelessWidget {
                 DocumentList(
                     trip: trip,
                     addMoreDocuments: markAsDelivered,
-                    images: trip.imagesDelivery)
+                    images: trip.imagesDelivery,
+                    imageLocation: 'images_delivery')
             ],
           ),
           Divider(

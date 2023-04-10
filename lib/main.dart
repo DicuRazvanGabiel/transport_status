@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:transport_status/firebase_options.dart';
+import 'package:transport_status/screens/history_screen.dart';
 import 'package:transport_status/screens/login_screen.dart';
 import 'package:transport_status/screens/order_screen.dart';
 import 'package:transport_status/screens/rest_screen.dart';
@@ -58,6 +59,9 @@ class MainApp extends StatelessWidget {
           return const LoginScreen();
         },
       ),
+      routes: {
+        HistoryScreen.routeName: (context) => const HistoryScreen(),
+      },
     );
   }
 }

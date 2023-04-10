@@ -23,7 +23,6 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uid = FirebaseAuth.instance.currentUser!.uid;
-    print(status);
 
     Future<void> uploadGalaryImages(
         Trip trip, ImagesPickupDelivery type) async {
@@ -186,9 +185,11 @@ class OrderScreen extends StatelessWidget {
             TextButton(
               onPressed: () async {
                 Navigator.of(context).pop();
+                context.loaderOverlay.show();
                 await FirebaseFunctions.instance
                     .httpsCallable("onCloseOrder")
                     .call({"driverID": uid});
+                context.loaderOverlay.hide();
               },
               child: const Text("Da", style: TextStyle(color: Colors.red)),
             ),
@@ -234,9 +235,7 @@ class OrderScreen extends StatelessWidget {
                   showDialogOnLogout();
                 }
                 if (MenuOptions.closeOrder == value) {
-                  context.loaderOverlay.show();
-
-                  context.loaderOverlay.hide();
+                  showDialogOnCloreOrder();
                 }
                 if (MenuOptions.rest == value) {
                   showDialogOnRest();
